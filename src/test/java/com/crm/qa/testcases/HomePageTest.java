@@ -22,6 +22,7 @@ public class HomePageTest extends TestBase {
 	
 	@BeforeMethod
 	public void setUp() {
+		log.info("*****************************************Starting HomePageTest TestCases **************************************************");
 		initialization();
 		testUtil = new TestUtil();
 		contactsPage = new ContactsPage();
@@ -32,6 +33,7 @@ public class HomePageTest extends TestBase {
 	
 	@Test(priority=1)
 	public void verifyHomePageTitleTest(){
+		log.info("*****************************************Starting verifyHomePageTitleTest **************************************************");
 		//wait.until(ExpectedConditions.visibilityOf(homePage.userNameLabel));
 		String homePageTitle =homePage.verifyHomePageTitle();  	
 		Assert.assertEquals(homePageTitle, "CRMPRO","Home page title not matched");
@@ -39,18 +41,21 @@ public class HomePageTest extends TestBase {
 	
 	@Test(priority=2)
 	public void verifyUserNameTest(){
+		log.info("*****************************************verifyUserNameTest **************************************************");
 		testUtil.switchToFrame();
 		Assert.assertTrue(homePage.verifyCorrectUserName());
 	}
 	
 	@Test(priority=3)
 	public void verifyContactsLinkTest() {
+		log.info("*****************************************verifyContactsLinkTest **************************************************");
 		testUtil.switchToFrame();
 		contactsPage=homePage.clickOnContactsLink();
 	}
 	
 	@AfterMethod
 	public void tearDown() {
+		log.info("*****************************************closing browser **************************************************");
 		driver.quit();
 	}
 	

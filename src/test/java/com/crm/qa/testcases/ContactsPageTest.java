@@ -27,6 +27,7 @@ public class ContactsPageTest extends TestBase {
 	
 	@BeforeMethod
 	public void setUp() {
+		log.info("*****************************************Starting Contactpage TestCases**************************************************");
 		initialization();
 		testUtil = new TestUtil();
 		contactsPage = new ContactsPage();
@@ -38,16 +39,19 @@ public class ContactsPageTest extends TestBase {
 	
 	@Test(priority=1)
 	public void verifyContactsPageLabel() {
+		log.info("*****************************************Starting verifyContactsPageLabel test **************************************************");
 		Assert.assertTrue(contactsPage.verifyContactsLabel(),"contacts label is not present");
 	}
 	
 	@Test(priority=2)
 	public void selectSingleContactsTest() {
+		log.info("*****************************************Starting selectSingleContactsTest **************************************************");
 		contactsPage.selectContactsByName("Amar Singla");
 	}
 	
 	@Test(priority=3)
 	public void selectMultipleContactsTest() {
+		log.info("*****************************************Starting selectMultipleContactsTest **************************************************");
 		contactsPage.selectContactsByName("Amar Singla");
 		contactsPage.selectContactsByName("Gur Sidhu");
 	}
@@ -60,6 +64,7 @@ public class ContactsPageTest extends TestBase {
 	
 	@Test(priority=4, dataProvider="getCRMTestData" )
 	public void validateCreateNewContact(String title, String firstname, String lastname, String company){
+		log.info("*****************************************Starting validateCreateNewContact test **************************************************");
 		homePage.clickOnNewContactLink();
 		//contactsPage.createNewContact("Mr.", "pardeep", "singh", "google");
 		contactsPage.createNewContact(title, firstname, lastname, company);
@@ -67,6 +72,7 @@ public class ContactsPageTest extends TestBase {
 	
 	@AfterMethod
 	public void tearDown() {
+		log.info("******************************************* Browser is closed *************************************************");
 		driver.quit();
 	}
 	

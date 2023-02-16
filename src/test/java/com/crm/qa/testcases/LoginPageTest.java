@@ -19,6 +19,7 @@ public class LoginPageTest extends TestBase {
 	
 	@BeforeMethod
 	public void setUp() {
+		log.info("*****************************************Starting LoginPageTest**************************************************");
 		initialization();
 		//create loginPage class object
 		loginPage = new LoginPage();
@@ -26,24 +27,28 @@ public class LoginPageTest extends TestBase {
 	
 	@Test(priority =1)
 	public void loginPageTitleTest() {
+		log.info("*****************************************loginPageTitleTest**************************************************");
 		String title= loginPage.validateLoginPageTitle();
 		Assert.assertEquals(title, "Free CRM - CRM software for customer relationship management, sales, and support.");
 	}
 	
 	@Test(priority =2)
 	public void crmLogoImageTest() {
+		log.info("*****************************************crmLogoImageTest**************************************************");
 		Boolean flag= loginPage.validateCRMImage();
 		Assert.assertTrue(flag);
 	}
 	
 	@Test(priority =3)
 	public void loginTest() {
+		log.info("*****************************************starting loginTest**************************************************");
 		homePage=loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
 		
 	}
 	
 	@AfterMethod
 	public void tearDown() {
+		log.info("*****************************************closing browser **************************************************");
 		driver.quit();
 	}
 	
